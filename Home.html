@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fashion World</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Banner */
+        .banner {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            color: #ffffff;
+            text-align: center;
+            background-color: #4277cb;
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(8, 7, 7, 0.925);
+        }
+
+        /* Header */
+        header {
+            background-image: url("2.jpg"); 
+            background-size: cover;
+            background-position: center; 
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            height: 150px;
+            width: 100%;
+        }
+
+        header img {
+            margin-left: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li:first-child {
+            margin-left: 0;
+        }
+
+        nav ul li a {
+            font-family: 'Poppins', sans-serif;
+            display: block;
+            padding: 10px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #3e3e3e;
+        }
+
+        .menu-link {
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .menu-link img {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* Slideshow */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .myslides {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: fit-content;
+        }
+
+        .myslides img {
+            width: 100%;
+            height: 550px;
+
+        }
+
+        .text {
+            color: #ffffff;
+            font-size: 2rem;
+            position: absolute;
+            bottom: 8px;
+            left: 16px;
+        }
+
+        body{
+          background-color: #f2f3f4;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-gap: 100px;
+        }
+
+        .item {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .img-rounded {
+            width: 100%;
+            height: 220px;
+            transition: opacity 0.3s ease;
+        }
+
+        .details {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(16, 15, 15, 0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .item:hover .details {
+            opacity: 1;
+        }
+
+        .details  {
+            color: white;
+            font-family: cursive;
+        }
+
+        .details a {
+            background-color: #4896b5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .details a:hover {
+            background-color: #45a049;
+        }
+
+        /* Section */
+        section {
+            margin-bottom: 40px;
+            background-color: rgba(10, 241, 238, 0.997);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #000307;
+            text-align: center;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-icons li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .social-icons li a img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .social-icons li a img:hover {
+            transform: scale(1.2);
+        }
+
+        .btn-custom {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .align-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body onload="showSlides()">
+    <div class="banner">
+        Fashion World
+    </div>
+
+    <header>
+        <img src="logo.png" class="img-circle" alt="Logo" width="auto" height="60">
+        <nav>
+            <ul>
+                <li><a href="#" id="home"><button type="button" class="btn btn-primary btn-custom">Home</button></a></li>
+                <li><a href="Dress.html"><button type="button" class="btn btn-primary btn-custom">Dress</button></a></li>
+                <li><a href="Dress details.html"><button type="button" class="btn btn-primary btn-custom">Dress details</button></a></li>
+                <li><a href="Contact-Us.html"><button type="button" class="btn btn-primary btn-custom">Contact-US</button></a></li>
+            </ul>
+        </nav>
+        <a href="Login.html"><button type="button" class="btn btn-link"><img src="account.png" class="img-circle" alt="Account" width="auto" height="60"></button></a>
+    </header>
+
+    <div class="slideshow-container">
+        <div class="myslides">
+            <img src="15.webp" class="img-thumbnail" alt="Fashion 1">
+            <div class="text">Fashion World</div>
+        </div>
+
+        <div class="myslides">
+            <img src="16.webp" class="img-thumbnail" alt="Fashion 2">
+            <div class="text">Fashion World</div>
+        </div>
+
+        <div class="myslides">
+            <img src="17.webp" class="img-thumbnail" alt="Fashion 3">
+            <div class="text">Fashion World</div>
+        </div>
+
+        <div class="myslides">
+            <img src="14.png" class="png-thumbnail" alt="Fashion 4">
+            <div class="text">Fashion World</div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="grid">
+        
+        <div class="item">
+            <img class="img-rounded" src="Women/1.jpg">
+            <div class="details">
+                <p class="description">Size->M,L,XL</p>
+                <p>Color->DarkBlue,Black</p>
+                <p class="price">Price->$50</p>
+                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+        </div>
+
+        <div class="item">
+            <img class="img-rounded" src="Women/2.jpg">
+            <div class="details">
+                <p class="description">Size->S,M,L</p>
+                <p>Color->White,Pink,Yellow</p>
+                <p class="price">Price->$25</p>
+                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+        </div>
+
+        <div class="item">
+            <img class="img-rounded" src="Women/3.jpg">
+            <div class="details">
+                <p class="description">Size->M,L,XL</p>
+                <p>Color->Grey,Blue</p>
+                <p class="price">Price->$35</p>
+                <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+        </div>
+        <div class="item" >
+            <img class="img-rounded" src="Women/4.jpg">
+            <div class="details">
+              <p class="description">Size->S,M,L,XL</p>
+              <p>Color->Black,White</p>
+              <p class="price">Price->$40</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div> 
+
+          <div class="item" >
+            <img class="img-rounded" src="Women/5.jpg">
+            <div class="details">
+              <p class="description">Size->S,M,L</p>
+              <p>Color->White,DarkBlue,Black</p>
+              <p class="price">Price->$60</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+    
+          <div class="item" >
+            <img class="img-rounded" src="Men/6.jpg">
+            <div class="details">
+              <p class="description">Size->S,M,L</p>
+              <p>Color->White,Black,DarkBlue,Brown</p>
+              <p class="price">Price->$20</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="item" >
+            <img class="img-rounded" src="Men/7.jpg">
+            <div class="details">
+              <p class="description">Size->S,M,L</p>
+              <p>Color->White,Black</p>
+              <p class="price">Price->$20</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="item" >
+            <img class="img-rounded" src="Men/8.jpg">
+            <div class="details">
+              <p class="description">Size->S,M,L,XL</p>
+              <p>Color->Ash,DarkBlue,White,Black,Red</p>
+              <p class="price">Price->$60</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="item" >
+            <img class="img-rounded" src="Men/9.jpg">
+            <div class="details">
+              <p class="description">Size->S,M,L,XL</p>
+              <p>Color->Pink,LiteBlue,LiteGreen</p>
+              <p class="price">Price->$60</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div> 
+
+          <div class="item" >
+            <img class="img-rounded" src="Men/10.jpg">
+            <div class="details">
+              <p class="description">Size->S,M,L,XL</p>
+              <p>Color->Ash,Brown</p>
+              <p class="price">Price->$80</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div> 
+
+          <div class="item" >
+            <img class="img-rounded" src="Girl baby/6.webp">
+            <div class="details">
+              <p class="description">Size->S,M,L</p>
+              <p>Color->Blue,Green,Yellow</p>
+              <p class="price">Price->$15</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="item" >
+            <img class="img-rounded" src="Girl baby/10.webp" >
+            <div class="details">
+              <p class="description">Size->S,M</p>
+              <p>Color->Yellow,White</p>
+              <p class="price">Price->$20</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="item" >
+            <img class="img-rounded" src="Girl baby/11.webp">
+            <div class="details">
+              <p class="description">Size->S,M</p>
+              <p>Color->Red,Blue</p>
+              <p class="price">Price->$20</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="item" >
+            <img class="img-rounded" src="Girl baby/8.webp">
+            <div class="details">
+              <p class="description">Size->S,M</p>
+              <p>Color->only White and Black</p>
+              <p class="price">Price->$15</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div> 
+
+          <div class="item" >
+            <img class="img-rounded" src="Girl baby/4.webp">
+            <div class="details">
+              <p class="description">Size->S</p>
+              <p>Color->Red,Pink,Blue,Green</p>
+              <p class="price">Price->$18</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+          
+          <div class="item" >
+            <img class="img-rounded" src="boy baby/2.jpg">
+            <div class="details">
+              <p class="description">Age under 12</p>
+              <p>Color->Yellow,White,Blue,Green</p>
+              <p class="price">Price->$10</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="item" >
+            <img class="img-rounded"src="boy baby/1.webp">
+            <div class="details">
+              <p class="description">Size->Age under 14</p>
+              <p>Color->White,Black</p>
+              <p class="price">Price->$13</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="item" >
+            <img class="img-rounded" src="boy baby/2.jpeg">
+            <div class="details">
+              <p class="description">Size->Age under 5</p>
+              <p>Color->White,Blue,Green,Yellow</p>
+              <p class="price">Price->$18</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+
+          <div class="item" >
+            <img class="img-rounded" src="boy baby/13.jpg">
+            <div class="details">
+              <p class="description">Size->Age under 5</p>
+              <p>Color->White,Blue,Green,Ash</p>
+              <p class="price">Price->$18</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div> 
+
+          <div class="item" >
+            <img class="img-rounded" src="boy baby/7.jpg">
+            <div class="details">
+              <p class="description">Size->Age under 10</p>
+              <p>Color->White,Ash,Brown</p>
+              <p class="price">Price->$25</p>
+              <a href="#" class="btn btn-success" data-toggle="modal" data-target="#cartModal">Add to Cart</a>
+            </div>
+          </div>
+    </div>
+
+    <br>
+
+    <section class="container">
+        <h2>Follow us on</h2>
+        <ul class="social-icons">
+            <li><a href="https://www.instagram.com/"><img src="instagram-48.png" class="img-rounded" alt="Instagram"></a></li>
+            <li><a href="https://www.facebook.com/"><img src="facebook-48.png" class="img-rounded" alt="Facebook"></a></li>
+            <li><a href="https://x.com/?lang=en"><img src="twitter-logo-48.png" class="img-rounded" alt="Twitter"></a></li>
+            <li><a href="https://web.whatsapp.com/"><img src="WhatsApp.webp" class="img-rounded" alt="WhatsApp"></a></li>
+            <li><a href="https://lk.linkedin.com/"><img src="linkedin.webp" class="img-rounded" alt="LinkedIn"></a></li>
+        </ul>
+    </section>
+    <div id="cartModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+           
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Item Added to Cart</h4>
+                </div>
+                <div class="modal-body">
+                    <p>The item has been added to your cart.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+      
+<div id="homeModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Home</h4>
+      </div>
+      <div class="modal-body">
+        <p>Here are the home page...</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("#home").click(function(){
+      $("#homeModal").modal();
+    });
+  });
+</script>
+
+    <script>
+      $(document).ready(function () {
+          var $slides = $(".myslides");
+          var index = 0;
+  
+          function displayNextSlide() {
+              $slides.hide();
+              index++;
+              if (index > $slides.length) { index = 1; }
+              $slides.eq(index - 1).show();
+              setTimeout(displayNextSlide, 2000); 
+          }
+  
+          displayNextSlide();
+      });
+  </script>
+</body>
+</html>
+
+

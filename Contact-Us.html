@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fashion World</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Banner */
+        .banner {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            color: #ffffff;
+            text-align: center;
+            background-color: #4277cb;
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(8, 7, 7, 0.925);
+        }
+
+        /* Header */
+        header {
+            background-image: url("2.jpg");
+            background-size: cover;
+            background-position: center;
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            height: 150px;
+            width: 100%;
+        }
+
+        header img {
+            margin-left: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li:first-child {
+            margin-left: 0;
+        }
+
+        nav ul li a {
+            font-family: 'Poppins', sans-serif;
+            display: block;
+            padding: 10px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: #3e3e3e;
+        }
+
+        .menu-link {
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .menu-link img {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* Body */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-image: url("2.jpeg");
+            background-position: center;
+            background-size: cover;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff88;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.808);
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-details h2 {
+            margin-bottom: 10px;
+        }
+
+        .contact-details p {
+            margin-bottom: 5px;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #status {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .btn-custom {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .align-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        Fashion World
+    </div>
+
+    <header>
+        <img src="logo.png" class="img-circle" alt="Logo" width="auto" height="60">
+        <nav>
+            <ul>
+                <li><a href="Home.html"><button type="button" class="btn btn-primary btn-custom">Home</button></a></li>
+                <li><a href="Dress.html"><button type="button" class="btn btn-primary btn-custom">Dress</button></a></li>
+                <li><a href="Dress details.html"><button type="button" class="btn btn-primary btn-custom">Dress details</button></a></li>
+                <li><a href="#" id="contact"><button type="button" class="btn btn-primary btn-custom">Contact-US</button></a></li>
+            </ul>
+        </nav>
+        <a href="Login.html"><button type="button" class="btn btn-link"><img src="account.png" class="img-circle" alt="Account" width="auto" height="60"></button></a>
+    </header>
+    
+    <div class="container">
+        <h1>Contact Us</h1>
+        <div class="contact-details">
+            <h2>Our Contact Details</h2>
+            <p>Email: contact@example.com</p>
+            <p>Phone: +1 123-456-7890</p>
+            <p>Address: 123 Main Street, City, Country</p>
+        </div>
+        <h2>Send Us a Message</h2>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+            <div style="display: flex; justify-content: space-between;">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <div style="width: 10px;"></div>
+                <button type="button" onclick="window.location.href='Home.html'" class="btn btn-primary">Cancel</button>
+            </div>
+        </form>
+        
+        <div id="status"></div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 Fashion World. All rights reserved.</p>
+    </footer>
+      <div id="contactModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Contact-US</h4>
+            </div>
+            <div class="modal-body">
+              <p>Here are the Contact-Us page...</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        $(document).ready(function(){
+          $("#contact").click(function(){
+            $("#contactModal").modal();
+          });
+        });
+      </script>
+</body>
+</html>
